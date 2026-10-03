@@ -6,13 +6,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fce4ec;
+    background-color: #ffe6eb !important;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow-x: hidden;
 }
 
 .card {
@@ -25,13 +24,13 @@ body {
     max-width: 380px;
     padding: 30px 20px;
     border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(244, 143, 177, 0.3);
+    box-shadow: 0 15px 35px rgba(244, 143, 177, 0.4);
     border: 2px solid #f8bbd0;
     animation: fadeIn 0.5s ease-in-out;
 }
 
 .card.active {
-    display: flex;
+    display: flex !important;
 }
 
 @keyframes fadeIn {
@@ -50,7 +49,7 @@ h1, h2 {
 }
 
 .subtext {
-    color: #888;
+    color: #777;
     font-size: 14px;
     margin-bottom: 20px;
 }
@@ -94,7 +93,6 @@ h1, h2 {
     display: none !important;
 }
 
-/* Bears & Cake */
 .bears-img { font-size: 50px; margin-bottom: 10px; }
 .bouquet-icon { font-size: 90px; margin: 20px 0; }
 .gift-box { font-size: 80px; cursor: pointer; margin: 20px 0; animation: bounce 1.5s infinite; }
@@ -122,7 +120,7 @@ h1, h2 {
 
 .revealed-text {
     font-family: 'Caveat', cursive;
-    font-size: 32px;
+    font-size: 30px;
     color: #e91e63;
     min-height: 45px;
     margin-top: 10px;
@@ -150,7 +148,7 @@ h1, h2 {
     100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
 }
 
-/* Polaroid Card */
+/* Polaroid Photo Card */
 .polaroid-wrapper {
     cursor: pointer;
     margin: 15px 0;
@@ -166,20 +164,18 @@ h1, h2 {
     transition: 0.3s;
 }
 
-.polaroid-card:hover {
-    transform: rotate(0deg) scale(1.02);
-}
-
 .polaroid-card img {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 260px;
+    height: 260px;
     object-fit: cover;
     border-radius: 6px;
+    display: block;
 }
 
 .handwritten {
     font-family: 'Caveat', cursive;
-    font-size: 24px;
+    font-size: 26px;
     color: #444;
     margin-top: 10px;
 }
@@ -200,4 +196,4 @@ h1, h2 {
     color: #880e4f;
     line-height: 1.4;
     text-align: left;
-}
+        }
