@@ -1,227 +1,364 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+border:
+    1px solid
+    #e7ddd2;
+
+  border-radius:4px;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fde2e4 0%, #fbcfe8 100%) !important;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    color: #4a5568;
-    overflow-x: hidden;
+.env-flap{
+  position:absolute;
+
+  left:0;
+  right:0;
+  top:10px;
+
+  height:115px;
+
+  background:#f9ddda;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      50% 78%
+    );
+
+  border:
+    2px solid
+    #e0c2b7;
+
+  transform-origin:50% 0;
+
+  transition:.7s ease;
+
+  z-index:3;
 }
 
-.card {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background: #ffffff;
-    width: 100%;
-    max-width: 400px;
-    padding: 35px 25px;
-    border-radius: 28px;
-    box-shadow: 0 20px 40px rgba(244, 114, 182, 0.25);
-    border: 2px solid #fbcfe8;
-    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+.env-heart{
+  position:absolute;
+
+  z-index:4;
+
+  top:70px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  font-size:2rem;
+
+  color:#d84c75;
+
+  transition:.4s;
 }
 
-.card.active {
-    display: flex !important;
+.envelope.open .env-flap{
+  transform:rotateX(180deg);
+  z-index:1;
 }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+.envelope.open .env-heart{
+  opacity:0;
 }
 
-h1, h2 {
-    color: #db2777;
-    font-weight: 600;
-    font-size: 22px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+.tap{
+  font-size:.8rem;
+  color:#9b6a79;
 }
 
-.highlight-name {
-    color: #be185d;
-    font-weight: 700;
+.letter-card{
+  max-width:440px;
+
+  margin:
+    24px auto
+    16px;
+
+  padding:
+    28px
+    24px
+    25px;
+
+  background:var(--paper);
+
+  border:
+    1px solid
+    #e1dfc8;
+
+  border-radius:10px;
+
+  text-align:left;
+
+  box-shadow:
+    0 14px 28px
+    rgba(90,64,46,.14);
+
+  transform:rotate(-1deg);
+
+  animation:
+    letterIn .7s ease;
+
+  position:relative;
+
+  font-family:Caveat,cursive;
+
+  font-size:1.25rem;
+
+  line-height:1.3;
 }
 
-.subtext {
-    color: #718096;
-    font-size: 14px;
-    margin-bottom: 20px;
+@keyframes letterIn{
+  from{
+    opacity:0;
+    transform:
+      translateY(30px)
+      rotate(-4deg);
+  }
+
+  to{
+    opacity:1;
+    transform:rotate(-1deg);
+  }
 }
 
-.btn-primary {
-    background: #ec4899;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
-    transition: all 0.2s ease;
-    margin-top: 10px;
+.letter-heart{
+  position:absolute;
+
+  right:14px;
+  top:10px;
+
+  background:#d83e72;
+
+  color:#fff;
+
+  border-radius:50%;
+
+  width:32px;
+  height:32px;
+
+  display:grid;
+  place-items:center;
 }
 
-.btn-primary:hover {
-    background: #db2777;
-    transform: translateY(-2px);
+.dear{
+  font-size:1.45rem;
+  margin-top:0;
 }
 
-.btn-secondary {
-    background: #fce7f3;
-    color: #db2777;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 10px;
+.love{
+  text-align:right;
+  font-weight:700;
+  color:#b13c64;
 }
 
-.btn-group {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
+.gift{
+  border:0;
+  background:none;
+
+  font-size:8rem;
+
+  cursor:pointer;
+
+  filter:
+    drop-shadow(
+      0 15px 12px
+      rgba(110,42,66,.15)
+    );
+
+  animation:
+    bob 1.8s
+    infinite ease-in-out;
 }
 
-.hidden {
-    display: none !important;
+@keyframes bob{
+  50%{
+    transform:
+      translateY(-12px)
+      rotate(3deg);
+  }
 }
 
-.bears-header {
-    font-size: 45px;
-    margin-bottom: 15px;
+.final-card{
+  padding:30px 20px 35px;
+
+  background:
+    rgba(255,255,255,.55);
+
+  border:
+    1px solid
+    rgba(255,255,255,.7);
+
+  border-radius:32px;
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:blur(8px);
 }
 
-.balloon-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 20px 0;
+.final-art{
+  font-size:4.5rem;
+  margin-bottom:8px;
 }
 
-.balloon-item {
-    cursor: pointer;
-    font-size: 60px;
-    transition: transform 0.2s;
-    user-select: none;
+.final-card h2{
+  font-size:2.5rem;
 }
 
-.balloon-item:hover {
-    transform: scale(1.15);
+.final-copy{
+  line-height:1.75;
+  font-size:.9rem;
+  color:#795263;
 }
 
-.popped-word {
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    color: #be185d;
-    margin-top: 10px;
-    min-height: 40px;
+.wide-btn{
+  width:min(430px,100%);
+
+  padding:
+    14px 18px;
+
+  border-radius:13px;
+
+  margin:8px 0;
 }
 
-.cake-wrapper {
-    position: relative;
-    cursor: pointer;
-    margin: 20px 0;
-    display: inline-block;
+.mini-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
 }
 
-.cake-emoji { font-size: 90px; }
+.mini-btn{
+  background:#fff;
+  color:#9a4865;
 
-.flame-emoji {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 30px;
-    animation: flicker 0.6s infinite alternate;
+  padding:
+    10px 14px;
+
+  border-radius:12px;
+
+  border:
+    1px solid
+    #efd5df;
 }
 
-@keyframes flicker {
-    0% { transform: translateX(-50%) scale(1); opacity: 1; }
-    100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+.tiny-note{
+  min-height:25px;
+
+  margin:12px 0 0;
+
+  font:
+    1.3rem
+    Caveat,
+    cursive;
+
+  color:#a34265;
 }
 
-.bouquet-img {
-    font-size: 100px;
-    margin: 15px 0;
+#hearts{
+  position:fixed;
+
+  inset:0;
+
+  pointer-events:none;
+
+  overflow:hidden;
+
+  z-index:0;
 }
 
-.polaroid-stack {
-    width: 250px;
-    margin: 15px auto;
-    cursor: pointer;
+.float-heart{
+  position:absolute;
+
+  bottom:-30px;
+
+  color:#e98ba9;
+
+  opacity:.42;
+
+  font-size:15px;
+
+  animation:
+    rise linear forwards;
 }
 
-.polaroid-card {
-    background: white;
-    padding: 12px 12px 18px 12px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    border: 1px solid #f3f4f6;
+@keyframes rise{
+  to{
+    transform:
+      translateY(-110vh)
+      rotate(25deg);
+
+    opacity:0;
+  }
 }
 
-.polaroid-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:22px;
+
+  transform:
+    translate(-50%,20px);
+
+  background:#6e334b;
+
+  color:#fff;
+
+  padding:
+    10px 16px;
+
+  border-radius:999px;
+
+  font-size:.78rem;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.25s;
+
+  z-index:50;
 }
 
-.polaroid-caption {
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
-    color: #374151;
-    margin-top: 8px;
+.toast.show{
+  opacity:1;
+
+  transform:
+    translate(-50%,0);
 }
 
-.envelope-wrapper {
-    font-size: 80px;
-    cursor: pointer;
-    margin: 15px 0;
-}
+@media(max-width:480px){
 
-.letter-paper {
-    background: #fffdfa;
-    border: 2px dashed #f472b6;
-    padding: 20px;
-    border-radius: 16px;
-    margin-top: 15px;
-    text-align: left;
-}
+  .screen{
+    padding:20px 12px 30px;
+  }
 
-.letter-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 22px;
-    color: #831843;
-    line-height: 1.5;
-}
+  .birthday-art{
+    height:215px;
+  }
 
-.gift-box-emoji {
-    font-size: 85px;
-    cursor: pointer;
-    margin: 15px 0;
-    animation: float 2s infinite ease-in-out;
-}
+  .bear,
+  .bunny{
+    font-size:5.7rem;
+    top:70px;
+  }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+  .cake{
+    font-size:4.2rem;
+    top:108px;
+  }
 
-.confetti-bears {
-    font-size: 60px;
-    margin-bottom: 10px;
-    }
+  .balloon-area{
+    height:300px;
+  }
+
+  .balloon{
+    font-size:4.5rem;
+  }
+
+  .polaroid img{
+    height:300px;
+  }
+
+  .letter-card{
+    font-size:1.15rem;
+  }
+                       }
