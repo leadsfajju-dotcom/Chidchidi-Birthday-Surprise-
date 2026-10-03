@@ -1,14 +1,53 @@
-<!-- Step 7: Final Surprise Gift -->
-    <div id="step7" class="card">
-        <h2>One Last Thing For Chidchidi... 🎁</h2>
-        <div class="gift-box" onclick="openGift()">🎁</div>
-        <div id="gift-message" class="hidden">
-            <h1 class="highlight">Lots of love for you, Chidchidi! ❤️</h1>
-            <p class="subtext">Once again, Happy Birthday! Hope you loved your surprise. ✨</p>
-            <button class="btn-primary" onclick="location.reload()">Replay 🔄</button>
-        </div>
-    </div>
+function goToStep(stepNum) {
+            document.getElementById(step${currentStep}).classList.remove('active');
+            document.getElementById(step${stepNum}).classList.add('active');
+            currentStep = stepNum;
+        }
 
-    <script src="script.js"></script>
+        function popBalloon(element, word) {
+            if (element.style.opacity === '0') return;
+            element.style.opacity = '0';
+            element.style.pointerEvents = 'none';
+            balloonWords.push(word);
+            document.getElementById('revealed-msg').innerText = balloonWords.join(' ');
+            poppedCount++;
+            if (poppedCount === 4) {
+                document.getElementById('btn-step2').classList.remove('hidden');
+            }
+        }
+
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            if (flame) {
+                flame.style.display = 'none';
+                document.getElementById('candle-hint').innerText = 'Make a wish! ✨';
+                document.getElementById('btn-step3').classList.remove('hidden');
+            }
+        }
+
+        const gallery = [
+            { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating you! 🎉' },
+            { src: 'Snapchat-1124254100.jpg', caption: 'Make a wish ✨' }
+        ];
+        let galleryIdx = 0;
+
+        function cyclePhotos() {
+            galleryIdx = (galleryIdx + 1) % gallery.length;
+            document.getElementById('photo-display').src = gallery[galleryIdx].src;
+            document.getElementById('photo-caption').innerText = gallery[galleryIdx].caption;
+        }
+
+        function openEnvelope() {
+            document.getElementById('envelope-btn').style.display = 'none';
+            document.getElementById('env-subtext').style.display = 'none';
+            document.getElementById('letter-box').classList.remove('hidden');
+        }
+
+        function openFinalGift() {
+            document.getElementById('gift-btn').style.display = 'none';
+            document.getElementById('gift-hint').style.display = 'none';
+            document.getElementById('final-surprise').classList.remove('hidden');
+        }
+    </script>
 </body>
-</html>
+    </html>
