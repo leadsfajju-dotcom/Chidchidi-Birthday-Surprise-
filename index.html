@@ -1,440 +1,328 @@
-const $ = (selector) =>
-document.querySelector(selector);
+DIGIT MASTER:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const $$ = (selector) =>
-[...document.querySelectorAll(selector)];
+  <title>Happy Birthday Chidchidi 💗</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* ALL SCREENS */
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-const screens = [
-"welcome",
-"balloons",
-"candle",
-"bouquet",
-"memories",
-"letter",
-"giftScreen",
-"final"
-];
+  <link rel="stylesheet" href="./style.css">
 
+</head>
 
-function go(screenName){
+<body>
 
-screens.forEach(name => {
+  <div id="hearts"></div>
 
-const screen =
-document.getElementById(name);
+  <!-- WELCOME -->
+  <section class="screen active" id="welcome">
+    <div class="content">
 
-if(screen){
+      <div class="small-text">A LITTLE SURPRISE FOR YOU</div>
 
-screen.classList.toggle(
-"active",
-name === screenName
-);
+      <h1>
+        Happy Birthday
+        <span>Chidchidi</span>
+      </h1>
 
-}
+      <p>
+        Today is all about one very special person...
+      </p>
 
-});
+      <button class="main-btn" data-next="balloons">
+        Start the Surprise ✨
+      </button>
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    </div>
+  </section>
 
-createHearts(6);
 
-}
+  <!-- BALLOONS -->
+  <section class="screen" id="balloons">
 
+    <div class="balloon b1">🎈</div>
+    <div class="balloon b2">🎈</div>
+    <div class="balloon b3">🎈</div>
+    <div class="balloon b4">🎈</div>
+    <div class="balloon b5">🎈</div>
 
-/* FLOATING HEARTS */
+    <div class="content">
 
-function createHearts(number = 2){
+      <div class="emoji-big">🎈</div>
 
-for(let i=0;i<number;i++){
+      <h2>Let the celebration begin!</h2>
 
-const heart =
-document.createElement("span");
+      <p>
+        Some people make ordinary days feel special.
+        <br>
+        Today, we celebrate you. 💗
+      </p>
 
-heart.className = "float";
+      <button class="main-btn" data-next="candle">
+        Keep Going 💕
+      </button>
 
-heart.textContent =
-Math.random() > .25
-? "♥"
-: "✦";
+    </div>
+  </section>
 
-heart.style.left =
-Math.random()*100 + "%";
 
-heart.style.fontSize =
-(10 + Math.random()*15) + "px";
+  <!-- CANDLE -->
+  <section class="screen" id="candle">
 
-heart.style.animationDuration =
-(5 + Math.random()*4) + "s";
+    <div class="content">
 
-document.getElementById("hearts")
-.appendChild(heart);
+      <div class="cake">
 
-setTimeout(
-() => heart.remove(),
-9500
-);
+        <div class="flame" id="flame">🔥</div>
 
-}
+        <div class="candle-stick"></div>
 
-}
+        <div class="cake-top"></div>
 
+        <div class="cake-body">
+          <span>♡</span>
+          <span>♡</span>
+          <span>♡</span>
+        </div>
 
-setInterval(
-() => createHearts(1),
-1700
-);
+      </div>
 
-createHearts(8);
+      <h2>Make a Birthday Wish 🕯️</h2>
 
+      <p>
+        Close your eyes for a moment...
+        <br>
+        Make your sweetest wish. ✨
+      </p>
 
-/* YES */
+      <button class="main-btn" id="blowBtn">
+        Blow the Candle 💨
+      </button>
 
-$("#yes").onclick = () => {
+      <button class="main-btn hidden" id="afterBlow" data-next="bouquet">
+        My Wish For You 🌸
+      </button>
 
-go("balloons");
+    </div>
+  </section>
 
-};
 
+  <!-- BOUQUET -->
+  <section class="screen" id="bouquet">
 
-/* NO BUTTON */
+    <div class="content">
 
-$("#no").onmouseenter = () => {
+      <div class="bouquet">🌹🌷🌹</div>
 
-const button = $("#no");
+      <h2>A Little Bouquet For You</h2>
 
-const x =
-Math.random()*100 - 50;
+      <p>
+        Because you deserve beautiful things,
+        beautiful moments,
+        and lots of reasons to smile.
+      </p>
 
-const y =
-Math.random()*40 - 20;
+      <div class="signature">
+        With lots of love 💗
+      </div>
 
-button.style.transform =
-translate(${x}px,${y}px);
+      <button class="main-btn" data-next="memories">
+        See Our Memories 📸
+      </button>
 
-};
+    </div>
+  </section>
 
 
-/* BALLOONS */
+  <!-- MEMORIES -->
+  <section class="screen" id="memories">
 
-let popped = 0;
+    <div class="content">
 
-$$(".balloon").forEach(
-balloon => {
+      <div class="small-text">A FEW SPECIAL MOMENTS</div>
 
-balloon.onclick = () => {
+      <h2>Our Little Memories 💕</h2>
 
-if(
-balloon.classList.contains(
-"popped"
-)
-){
-return;
-}
+      <div class="photo-card">
 
-balloon.classList.add(
-"popped"
-);
+        <div class="photo-frame">
+          <img
+            id="photo"
+            src="IMG_20261003_150001.jpg"
+            alt="Memory">
+        </div>
 
-popped++;
+        <div class="photo-caption" id="photoCaption">
+          Happy Birthday! 💗
+        </div>
 
-const word =
-document.createElement("span");
+      </div>
 
-word.textContent =
-balloon.dataset.word;
+      <div class="memory-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
 
-word.className =
-"word";
+      <div class="photo-buttons">
+        <button class="round-btn" id="prevPhoto">←</button>
+        <button class="round-btn" id="nextPhoto">→</button>
+      </div>
 
-$("#words").appendChild(word);
+      <button class="main-btn" data-next="letter">
+        There's Something For You 💌
+      </button>
 
-createHearts(3);
+    </div>
+  </section>
 
-if(popped === 4){
 
-setTimeout(
-() => {
+  <!-- LETTER -->
+  <section class="screen" id="letter">
 
-$("#toCandle")
-.classList
-.remove("hidden");
+    <div class="content">
 
-},
-500
-);
+      <div class="envelope" id="envelope">
 
-}
+        <div class="envelope-top"></div>
 
-};
+        <div class="envelope-body">
+          <div class="heart-seal">♥</div>
+        </div>
 
-});
+</div>
 
+      <h2>One Little Message...</h2>
 
-$("#toCandle").onclick =
-() => {
+      <p id="letterHint">
+        Tap the envelope to open it 💌
+      </p>
 
-go("candle");
+      <div class="letter-box" id="letterBox">
 
-};
+        <div class="letter-title">
+          For My Chidchidi 💗
+        </div>
 
+        <p>
+          Whatever happens, your smile will always be
+          special to me.
+        </p>
 
-/* CANDLE */
+        <p>
+          I hope this birthday brings you countless
+          beautiful moments, happiness and reasons to smile.
+        </p>
 
-$("#blow").onclick = () => {
+        <p>
+          Keep shining, keep smiling and always be
+          the amazing person you are. ✨
+        </p>
 
-$(".cake-scene")
-.classList
-.add("blown");
+        <div class="letter-sign">
+          Happy Birthday! 🎂💗
+        </div>
 
-$(".wish").innerHTML =
-"Wish made? ✨<br>" +
-"<small>May it come true.</small>";
+      </div>
 
-$("#blow")
-.classList
-.add("hidden");
+      <button class="main-btn hidden" id="letterNext" data-next="giftScreen">
+        One More Surprise 🎁
+      </button>
 
-createHearts(12);
+    </div>
+  </section>
 
-setTimeout(
-() => {
 
-go("bouquet");
+  <!-- GIFT -->
+  <section class="screen" id="giftScreen">
 
-},
-1300
-);
+    <div class="content">
 
-};
+      <div class="gift" id="gift">
 
+        <div class="gift-lid"></div>
 
-/* BOUQUET */
+        <div class="gift-box">
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-ribbon-h"></div>
+        </div>
 
-$("#toMemories").onclick =
-() => {
+      </div>
 
-go("memories");
+      <h2>There's One Last Surprise...</h2>
 
-};
+      <p>
+        You have come this far.
+        <br>
+        Now open your gift. 🎁
+      </p>
 
+      <button class="main-btn" id="openGift">
+        Open My Gift ✨
+      </button>
 
-/* PHOTO CARDS */
+    </div>
+  </section>
 
-const photos = [
 
-{
-src:
-"IMG_20261003_150001.jpg",
+  <!-- FINAL -->
+  <section class="screen" id="final">
 
-text:
-"Happy Birthday! 💗"
-},
+    <div class="final-glow"></div>
 
-{
-src:
-"Snapchat-1124254100.jpg",
+    <div class="content">
 
-text:
-"Make a beautiful wish! 🌹"
-},
+      <div class="final-hearts">
+        💗 💕 💗
+      </div>
 
-{
-src:
-"IMG_20261003_150001.jpg",
+      <div class="small-text">
+        TODAY & ALWAYS
+      </div>
 
-text:
-"Celebrating my special CHIDCHIDI ✨"
-}
+      <h1>
+        Happy Birthday
+        <span>Chidchidi</span>
+      </h1>
 
-];
+      <div class="final-message">
 
+        <p>
+          May your life always be filled with
+          happiness, laughter and beautiful surprises.
+        </p>
 
-let photoIndex = 0;
+        <p>
+          Keep smiling...
+          because your smile makes everything better. 💗
+        </p>
 
+      </div>
 
-function showPhoto(){
+      <div class="birthday-cake">
+        🎂
+      </div>
 
-const current =
-photos[photoIndex];
+      <div class="final-sign">
+        Have the most beautiful birthday! ✨
+      </div>
 
-$("#photo").src =
-current.src;
+      <button class="main-btn" id="restart">
+        Watch Again ↻
+      </button>
 
-$("#caption").textContent =
-current.text;
+    </div>
 
+  </section>
 
-$$(".dots i").forEach(
-(dot,index) => {
 
-dot.classList.toggle(
-"active",
-index === photoIndex
-);
+  <script src="./script.js"></script>
 
-});
-
-}
-
-
-showPhoto();
-
-
-function nextPhoto(){
-
-photoIndex =
-(photoIndex + 1)
-% photos.length;
-
-showPhoto();
-
-}
-
-
-function previousPhoto(){
-
-photoIndex =
-(photoIndex - 1 + photos.length)
-% photos.length;
-
-showPhoto();
-
-}
-
-
-/* CLICK PHOTO */
-
-$("#photoCard").onclick =
-() => {
-
-nextPhoto();
-
-};
-
-
-/* SWIPE */
-
-let startX = 0;
-
-
-$("#photoCard").addEventListener(
-"touchstart",
-event => {
-
-startX =
-event.touches[0].clientX;
-
-},
-{
-passive:true
-}
-);
-
-
-$("#photoCard").addEventListener(
-"touchend",
-event => {
-
-const endX =
-event.changedTouches[0].clientX;
-
-const difference =
-endX - startX;
-
-if(
-Math.abs(difference) > 45
-){
-
-if(difference < 0){
-
-nextPhoto();
-
-}else{
-
-previousPhoto();
-
-}
-
-}
-
-}
-);
-
-
-/* NEXT TO LETTER */
-
-$("#toLetter").onclick =
-() => {
-
-go("letter");
-
-};
-
-
-/* ENVELOPE */
-
-$("#envelope").onclick =
-() => {
-
-$("#envelope")
-.classList
-.add("open");
-
-$("#tap")
-.classList
-.add("hidden");
-
-$("#letterCard")
-.classList
-.remove("hidden");
-
-$("#toGift")
-.classList
-.remove("hidden");
-
-createHearts(12);
-
-};
-
-
-/* LETTER TO GIFT */
-
-$("#toGift").onclick =
-() => {
-
-go("giftScreen");
-
-};
-
-
-/* GIFT */
-
-$("#gift").onclick =
-() => {
-
-createHearts(25);
-
-go("final");
-
-};
-
-
-/* FINAL BUTTONS */
-
-$("#love").onclick =
-() => {
-
-$("#note").textContent =
-"Dear Chidchidi, you deserve all the happiness, love and smiles in the world. 💌";
-
-};
-
-
-$("#sorry").onclick =
-() => {
+</body>
+                               </html>
