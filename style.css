@@ -1,54 +1,183 @@
-let currentStep = 1;
-let poppedCount = 0;
-let balloonWords = [];
+$$("#memoryDots .dot")
+    .forEach(
+      (d,i) => {
 
-function goToStep(stepNum) {
-    document.getElementById(step${currentStep}).classList.remove('active');
-    document.getElementById(step${stepNum}).classList.add('active');
-    currentStep = stepNum;
+        d.classList.toggle(
+          "active",
+          i === memoryIndex
+        );
+
+      }
+    );
 }
 
-function popBalloon(element, word) {
-    if (element.style.opacity === '0') return;
-    element.style.opacity = '0';
-    element.style.pointerEvents = 'none';
-    balloonWords.push(word);
-    document.getElementById('revealed-msg').innerText = balloonWords.join(' ');
-    poppedCount++;
-    if (poppedCount === 4) {
-        document.getElementById('btn-step2').classList.remove('hidden');
+
+function nextMemory(){
+
+  memoryIndex =
+    (memoryIndex + 1)
+    % memories.length;
+
+  renderMemory();
+}
+
+
+function prevMemory(){
+
+  memoryIndex =
+    (memoryIndex - 1 + memories.length)
+    % memories.length;
+
+  renderMemory();
+}
+
+
+$("#memoryNext").addEventListener(
+  "click",
+  () => showScreen("letter")
+);
+
+
+let startX = 0;
+let startY = 0;
+
+
+$("#memoryCard").addEventListener(
+  "touchstart",
+  (e) => {
+
+    startX =
+      e.touches[0].clientX;
+
+    startY =
+      e.touches[0].clientY;
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+$("#memoryCard").addEventListener(
+  "touchend",
+  (e) => {
+
+    const dx =
+      e.changedTouches[0].clientX
+      - startX;
+
+    const dy =
+      e.changedTouches[0].clientY
+      - startY;
+
+    if(
+      Math.abs(dx) > 55 &&
+      Math.abs(dx) > Math.abs(dy)
+    ){
+
+      dx < 0
+        ? nextMemory()
+        : prevMemory();
+
     }
-}
 
-function blowCandle() {
-    const flame = document.getElementById('flame');
-    if (flame) {
-        flame.style.display = 'none';
-        document.getElementById('candle-hint').innerText = 'Make a wish! ✨';
-        document.getElementById('btn-step3').classList.remove('hidden');
+  }
+);
+
+
+$("#memoryCard").addEventListener(
+  "click",
+  nextMemory
+);
+
+
+renderMemory();
+
+
+/* LETTER */
+
+$("#envelope").addEventListener(
+  "click",
+  () => {
+
+    $("#envelope")
+      .classList
+      .add("open");
+
+    $("#letterCard")
+      .classList
+      .remove("hidden");
+
+    $(".tap")
+      .classList
+      .add("hidden");
+
+    $("#letterNext")
+      .classList
+      .remove("hidden");
+
+    addHearts(12);
+  }
+);
+
+
+$("#letterNext").addEventListener(
+  "click",
+  () => showScreen("lastThing")
+);
+
+
+/* FINAL GIFT */
+
+$("#gift").addEventListener(
+  "click",
+  () => {
+
+    showScreen("final");
+
+    addHearts(28);
+
+  }
+);
+
+
+/* FINAL BUTTONS */
+
+$("#loveLetterBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      $("#finalNote")
+        .textContent =
+        "Dear Chidchidi, you deserve all the happiness in the world. 💌";
+
     }
-}
+  );
 
-const gallery = [
-    { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating you! 🎉' },
-    { src: 'Snapchat-1124254100.jpg', caption: 'Make a wish ✨' }
-];
-let galleryIdx = 0;
 
-function cyclePhotos() {
-    galleryIdx = (galleryIdx + 1) % gallery.length;
-    document.getElementById('photo-display').src = gallery[galleryIdx].src;
-    document.getElementById('photo-caption').innerText = gallery[galleryIdx].caption;
-}
+$("#sorryBtn")
+  .addEventListener(
+    "click",
+    () => {
 
-function openEnvelope() {
-    document.getElementById('envelope-btn').style.display = 'none';
-    document.getElementById('env-subtext').style.display = 'none';
-    document.getElementById('letter-box').classList.remove('hidden');
-}
+      $("#finalNote")
+        .textContent =
+        "No matter what, I hope your smile always wins. ❤️";
 
-function openFinalGift() {
-    document.getElementById('gift-btn').style.display = 'none';
-    document.getElementById('gift-hint').style.display = 'none';
-    document.getElementById('final-surprise').classList.remove('hidden');
-        }
+    }
+  );
+
+
+$("#proposalBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      $("#finalNote")
+        .textContent =
+        "One special person. One very special birthday. 💍💗";
+
+    }
+  );
