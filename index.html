@@ -1,25 +1,26 @@
-On your special day, I wish you all the happiness, love, and joy that you deserve! ✨<br><br>
-                With love and best wishes,<br>
-                Your Special Someone ❤️
-            </p>
-            <button class="btn-primary" style="margin-top: 20px; width: 100%;" onclick="goToStep(7)">One Last Thing... 🎁</button>
-        </div>
-    </div>
+const gallery = [
+            { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating you! 🎉' },
+            { src: 'Snapchat-1124254100.jpg', caption: 'Make a wish ✨' }
+        ];
+        let galleryIdx = 0;
 
-    <!-- STEP 7: FINAL SURPRISE -->
-    <div id="step7" class="card">
-        <h2>One Last Thing... 🎁</h2>
-        <div id="gift-btn" class="gift-box-emoji" onclick="openFinalGift()">🎁</div>
-        <p id="gift-hint" class="subtext">Tap the gift box!</p>
+        function cyclePhotos() {
+            galleryIdx = (galleryIdx + 1) % gallery.length;
+            document.getElementById('photo-display').src = gallery[galleryIdx].src;
+            document.getElementById('photo-caption').innerText = gallery[galleryIdx].caption;
+        }
 
-        <div id="final-surprise" class="hidden">
-            <div class="confetti-bears">🐻🎂🐻</div>
-            <h1 class="highlight-name" style="font-size: 24px;">Lots of love for you, CHIDCHIDI! ❤️</h1>
-            <p class="subtext" style="margin-top: 10px;">Once again, Happy Birthday! Hope you loved your surprise. ✨</p>
-            <button class="btn-primary" onclick="location.reload()">Replay 🔄</button>
-        </div>
-    </div>
+        function openEnvelope() {
+            document.getElementById('envelope-btn').style.display = 'none';
+            document.getElementById('env-subtext').style.display = 'none';
+            document.getElementById('letter-box').classList.remove('hidden');
+        }
 
-    <script src="script.js"></script>
+        function openFinalGift() {
+            document.getElementById('gift-btn').style.display = 'none';
+            document.getElementById('gift-hint').style.display = 'none';
+            document.getElementById('final-surprise').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
