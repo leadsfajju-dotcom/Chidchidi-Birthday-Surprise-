@@ -1,156 +1,291 @@
-<button class="dot active"></button>
-        <button class="dot"></button>
-        <button class="dot"></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Chidchidi 💗</title>
 
-      </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      <button class="next-btn" id="memoryNext">
-        Continue →
-      </button>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-    </div>
+<link rel="stylesheet" href="style.css">
+</head>
 
-  </section>
+<body>
+
+<div id="hearts"></div>
+
+<main class="app">
+
+<!-- ================= WELCOME ================= -->
+
+<section class="screen active" id="welcome">
+
+<div class="content">
+
+<div class="top-hearts">♥ ✦ ♥</div>
+
+<h1>
+Happy Birthday,
+<br>
+<strong>CHIDCHIDI</strong>
+</h1>
+
+<div class="characters">
+
+<div class="bear">🐻</div>
+
+<div class="cake-emoji">🎂</div>
+
+<div class="bunny">🐰</div>
+
+<div class="sparkles">
+✦ ♥ ✦
+</div>
+
+</div>
+
+<p class="small">
+Are you excited for your special day?
+</p>
+
+<div class="choice">
+
+<button id="yes" class="pink-btn">
+Yes
+</button>
+
+<button id="no" class="white-btn">
+No
+</button>
+
+</div>
+
+</div>
+
+</section>
 
 
-  <!-- LETTER -->
-  <section class="screen" id="letter">
+<!-- ================= BALLOONS ================= -->
 
-    <div class="section-card">
+<section class="screen" id="balloons">
 
-      <h2>
-        A Message From My Heart
-      </h2>
+<div class="content">
 
-      <button class="envelope" id="envelope">
+<h2>
+Pop all 4 balloons
+</h2>
 
-        <span class="env-back"></span>
-        <span class="env-paper"></span>
-        <span class="env-flap"></span>
-        <span class="env-heart">♥</span>
+<p class="hint">
+Pop them one by one 💗
+</p>
 
-      </button>
+<div class="balloon-stage">
 
-      <p class="tap">
-        Tap the envelope 💌
-      </p>
+<button class="balloon one" data-word="You">🎈</button>
+
+<button class="balloon two" data-word="are">🎈</button>
+
+<button class="balloon three" data-word="so">🎈</button>
+
+<button class="balloon four" data-word="special">🎈</button>
+
+</div>
+
+<div class="words" id="words"></div>
+
+<button class="continue hidden" id="toCandle">
+Continue →
+</button>
+
+</div>
+
+</section>
 
 
-      <article class="letter-card hidden" id="letterCard">
+<!-- ================= CANDLE ================= -->
 
-        <div class="letter-heart">
-          ♥
-        </div>
+<section class="screen" id="candle">
 
-        <p class="dear">
-          Dear CHIDCHIDI,
+<div class="content">
+
+<h2>
+Blow the candle,
+<br>
+CHIDCHIDI
+</h2>
+
+<div class="cake-scene">
+
+<div class="flame" id="flame">
+🔥
+</div>
+
+<div class="candle-stick"></div>
+
+<div class="cake-top"></div>
+
+<div class="cake-body"></div>
+
+<div class="plate"></div>
+
+</div>
+
+<div class="wish">
+
+Close your eyes
+<br>
+&amp; make a wish
+
+</div>
+
+<button class="continue" id="blow">
+✨ Blow the candle
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= BOUQUET ================= -->
+
+<section class="screen" id="bouquet">
+
+<div class="content">
+
+<h2>
+A Rose Bouquet For You 🌹
+</h2>
+
+<p class="hint">
+Just for my CHIDCHIDI
+</p>
+
+<div class="bouquet-art">
+
+<div class="roses">
+🌹 🌹
+<br>
+🌹 🌹 🌹
+</div>
+
+<div class="paper"></div>
+
+<div class="bow">
+🎀
+</div>
+
+</div>
+
+<button class="continue" id="toMemories">
+Continue →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= PHOTO MEMORIES ================= -->
+
+<section class="screen" id="memories">
+
+<div class="content">
+
+<h2>
+Some Sweet Moments
+</h2>
+
+<p class="hint">
+Swipe the card ❤️
+</p>
+
+<div class="photo-card" id="photoCard">
+
+<div class="photo-top">
+
+<span>♥</span>
+
+<img
+id="photo"
+src="IMG_20261003_150001.jpg"
+alt="Chidchidi Memory"
+>
+
+</div>
+
+<div class="caption" id="caption">
+Happy Birthday! 💗
+</div>
+
+</div>
+
+<div class="dots" id="dots">
+
+<i class="active"></i>
+<i></i>
+<i></i>
+
+</div>
+
+<button class="continue" id="toLetter">
+Continue →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= ENVELOPE ================= -->
+
+<section class="screen" id="letter">
+
+<div class="content">
+
+<h2>
+A Message From My Heart
+</h2>
+
+<div class="envelope" id="envelope">
+
+<div class="env-paper"></div>
+
+<div class="env-flap"></div>
+
+<div class="seal">
+♥
+</div>
+
+</div>
+
+<p class="hint" id="tap">
+Tap the envelope 💌
+</p>
+
+
+<article class="letter hidden" id="letterCard">
+
+<div class="pin">
+♥
+</div>
+
+<p>
+Dear <b>CHIDCHIDI</b>,
+</p>
+
+<p>
+Happy Birthday to someone truly special! 🎂
+</p>
+
+<p>
+You are sweet, loyal, my rock, and I’m so grateful to have you in my life.
+</p>
+
+<p>
+You bring so much warmth and sweetness into my life.
+Every moment with you is precious.
         </p>
-
-        <p>
-          Happy Birthday to someone truly special! 🎂
-        </p>
-
-        <p>
-          You are sweet, loyal, my rock, and I’m so grateful to have you in my life.
-        </p>
-
-        <p>
-          You bring so much warmth and sweetness into my life. Every moment with you is precious.
-        </p>
-
-        <p>
-          On your special day, I wish you all the happiness, love, and joy that you deserve.
-          May this year bring you countless beautiful moments and wonderful memories.
-        </p>
-
-        <p>
-          Here’s to celebrating you today and always! ❤️
-        </p>
-
-        <p class="love">
-          With love! 💗
-        </p>
-
-      </article>
-
-
-      <button class="next-btn hidden" id="letterNext">
-        Continue →
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- GIFT -->
-  <section class="screen" id="lastThing">
-
-    <div class="section-card">
-
-      <h2>
-        One Last Thing...
-      </h2>
-
-      <p class="subtitle">
-        Tap the gift 🎁
-      </p>
-
-      <button class="gift" id="gift">
-        🎁
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- FINAL -->
-  <section class="screen" id="final">
-
-    <div class="final-card">
-
-      <div class="final-art">
-        🧸💗🐻
-      </div>
-
-      <h2>
-        Lots of love for you
-      </h2>
-
-      <p class="final-copy">
-        Once again, Happy Birthday, CHIDCHIDI!<br>
-        Stay happy, keep smiling &amp; keep shining. ✨
-      </p>
-
-      <button class="wide-btn" id="loveLetterBtn">
-        💌 Write a Heartfelt Love Letter
-      </button>
-
-      <div class="mini-actions">
-
-        <button class="mini-btn" id="sorryBtn">
-          ❤️ Say Sorry
-        </button>
-
-        <button class="mini-btn" id="proposalBtn">
-          💍 Propose
-        </button>
-
-      </div>
-
-      <p class="tiny-note" id="finalNote"></p>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
-
-</body>
-              </html>
