@@ -1,18 +1,26 @@
 
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => [...document.querySelectorAll(selector)];
+const $ = (selector) =>
+  document.querySelector(selector);
+
+const $$ = (selector) =>
+  [...document.querySelectorAll(selector)];
 
 
 /* =========================
-   SCREEN CHANGE
+   SCREEN TRANSITIONS
 ========================= */
 
 function showScreen(id) {
 
-  const current = $(".screen.active");
-  const next = document.getElementById(id);
+  const current =
+    document.querySelector(".screen.active");
 
-  if (!next || current === next) return;
+  const next =
+    document.getElementById(id);
+
+  if (!next) return;
+
+  if (current === next) return;
 
   if (current) {
     current.classList.remove("active");
@@ -20,8 +28,8 @@ function showScreen(id) {
 
   setTimeout(() => {
     next.classList.add("active");
-  }, 100);
-
+    next.scrollTop = 0;
+  }, 80);
 }
 
 
@@ -33,10 +41,9 @@ $$("[data-next]").forEach(button => {
 
   button.addEventListener("click", () => {
 
-    const nextScreen =
-      button.getAttribute("data-next");
-
-    showScreen(nextScreen);
+    showScreen(
+      button.getAttribute("data-next")
+    );
 
   });
 
@@ -47,7 +54,8 @@ $$("[data-next]").forEach(button => {
    FLOATING HEARTS
 ========================= */
 
-const hearts = $("#hearts");
+const hearts =
+  document.getElementById("hearts");
 
 function createHeart() {
 
@@ -58,17 +66,17 @@ function createHeart() {
 
   heart.className = "heart";
 
-  heart.textContent =
-    Math.random() > .5 ? "♥" : "♡";
-
   heart.style.left =
     Math.random() * 100 + "%";
 
-  heart.style.fontSize =
-    (12 + Math.random() * 22) + "px";
+  heart.style.width =
+    (8 + Math.random() * 7) + "px";
+
+  heart.style.height =
+    (8 + Math.random() * 7) + "px";
 
   const duration =
-    6 + Math.random() * 6;
+    7 + Math.random() * 5;
 
   heart.style.animationDuration =
     duration + "s";
@@ -78,70 +86,96 @@ function createHeart() {
   setTimeout(() => {
     heart.remove();
   }, duration * 1000);
-
 }
 
-setInterval(createHeart, 900);
+setInterval(createHeart, 1100);
+
+for (let i = 0; i < 7; i++) {
+
+  setTimeout(
+    createHeart,
+    i * 500
+  );
+
+}
 
 
 /* =========================
    CANDLE
 ========================= */
 
-const blowBtn = $("#blowBtn");
-const flame = $("#flame");
-const afterBlow = $("#afterBlow");
+const blowBtn =
+  document.getElementById("blowBtn");
+
+const flame =
+  document.getElementById("flame");
+
+const afterBlow =
+  document.getElementById("afterBlow");
+
 
 if (blowBtn) {
 
-  blowBtn.addEventListener("click", () => {
+  blowBtn.addEventListener(
+    "click",
+    () => {
 
-    flame.style.transform =
-      "scale(1.6)";
+      flame.style.opacity = "0";
 
-    flame.style.opacity = "0";
+      flame.style.transform =
+        "rotate(45deg) scale(1.8)";
 
-    blowBtn.classList.add("hidden");
+      blowBtn.classList.add(
+        "hidden"
+      );
 
-    setTimeout(() => {
+      setTimeout(() => {
 
-      afterBlow.classList.remove("hidden");
+        afterBlow.classList.remove(
+          "hidden"
+        );
 
-    }, 600);
+      }, 550);
 
-  });
+    }
+  );
 
 }
 
 
 /* =========================
-   PHOTOS
+   MEMORIES
 ========================= */
 
 const photos = [
 
   {
     src: "IMG_20261003_150001.jpg",
-    text: "Happy Birthday! 💗"
+    text: "A beautiful memory"
   },
 
   {
     src: "Snapchat-1124254100.jpg",
-    text: "A beautiful memory 🌹"
+    text: "A special moment"
   },
 
   {
     src: "IMG_20261003_150001.jpg",
-    text: "Celebrating my special Chidchidi ✨"
+    text: "A memory worth keeping"
   }
 
 ];
 
 let photoIndex = 0;
 
-const photo = $("#photo");
-const caption = $("#photoCaption");
-const dots = $$(".dot");
+const photo =
+  document.getElementById("photo");
+
+const caption =
+  document.getElementById("photoCaption");
+
+const dots =
+  $$(".dot");
 
 
 function updatePhoto(index) {
@@ -155,69 +189,86 @@ function updatePhoto(index) {
     photo.src =
       photos[index].src;
 
-    caption.textContent =
-      photos[index].text;
+    caption.innerHTML =
+      photos[index].text +
+      ' <span class="flower-dot">✿</span>';
 
-    dots.forEach((dot, i) => {
+    dots.forEach(
+      (dot, i) => {
 
-      dot.classList.toggle(
-        "active",
-        i === index
-      );
+        dot.classList.toggle(
+          "active",
+          i === index
+        );
 
-    });
+      }
+    );
 
     photo.onload = () => {
 
-      photo.classList.remove("changing");
+      photo.classList.remove(
+        "changing"
+      );
 
     };
 
-  }, 300);
-
+  }, 260);
 }
 
 
-const nextPhoto = $("#nextPhoto");
-const prevPhoto = $("#prevPhoto");
+const nextPhoto =
+  document.getElementById("nextPhoto");
+
+const prevPhoto =
+  document.getElementById("prevPhoto");
 
 
 if (nextPhoto) {
 
-  nextPhoto.addEventListener("click", () => {
+  nextPhoto.addEventListener(
+    "click",
+    () => {
 
-    photoIndex++;
+      photoIndex++;
 
-    if (photoIndex >= photos.length) {
-      photoIndex = 0;
+      if (
+        photoIndex >=
+        photos.length
+      ) {
+        photoIndex = 0;
+      }
+
+      updatePhoto(photoIndex);
+
     }
-
-    updatePhoto(photoIndex);
-
-  });
+  );
 
 }
 
 
 if (prevPhoto) {
 
-  prevPhoto.addEventListener("click", () => {
+  prevPhoto.addEventListener(
+    "click",
+    () => {
 
-    photoIndex--;
+      photoIndex--;
 
-    if (photoIndex < 0) {
-      photoIndex = photos.length - 1;
+      if (photoIndex < 0) {
+        photoIndex =
+          photos.length - 1;
+      }
+
+      updatePhoto(photoIndex);
+
     }
-
-    updatePhoto(photoIndex);
-
-  });
+  );
 
 }
 
 
 /* =========================
-   PHOTO SWIPE
+   SWIPE PHOTO
 ========================= */
 
 let touchStartX = 0;
@@ -226,10 +277,11 @@ if (photo) {
 
   photo.addEventListener(
     "touchstart",
-    (event) => {
+    event => {
 
       touchStartX =
-        event.changedTouches[0].screenX;
+        event.changedTouches[0]
+          .screenX;
 
     },
     { passive: true }
@@ -238,15 +290,18 @@ if (photo) {
 
   photo.addEventListener(
     "touchend",
-    (event) => {
+    event => {
 
-      const touchEndX =
-        event.changedTouches[0].screenX;
+const endX =
+        event.changedTouches[0]
+          .screenX;
 
       const difference =
-        touchEndX - touchStartX;
+        endX - touchStartX;
 
-      if (Math.abs(difference) < 50) {
+      if (
+        Math.abs(difference) < 45
+      ) {
         return;
       }
 
@@ -267,30 +322,46 @@ if (photo) {
    ENVELOPE
 ========================= */
 
-const envelope = $("#envelope");
-const letterBox = $("#letterBox");
-const letterHint = $("#letterHint");
-const letterNext = $("#letterNext");
+const envelope =
+  document.getElementById("envelope");
+
+const letterBox =
+  document.getElementById("letterBox");
+
+const letterHint =
+  document.getElementById("letterHint");
+
+const letterNext =
+  document.getElementById("letterNext");
 
 
 if (envelope) {
 
-envelope.addEventListener("click", () => {
+  envelope.addEventListener(
+    "click",
+    () => {
 
-    envelope.classList.add("open");
+      envelope.classList.add(
+        "open"
+      );
 
-    setTimeout(() => {
+      setTimeout(() => {
 
-      letterBox.classList.add("show");
+        letterBox.classList.add(
+          "show"
+        );
 
-      letterHint.textContent =
-        "A little message, just for you 💗";
+        letterHint.innerHTML =
+          'A little message, just for you <span class="tiny-heart">♥</span>';
 
-      letterNext.classList.remove("hidden");
+        letterNext.classList.remove(
+          "hidden"
+        );
 
-    }, 500);
+      }, 500);
 
-  });
+    }
+  );
 
 }
 
@@ -299,28 +370,36 @@ envelope.addEventListener("click", () => {
    GIFT
 ========================= */
 
-const gift = $("#gift");
-const openGift = $("#openGift");
+const gift =
+  document.getElementById("gift");
+
+const openGift =
+  document.getElementById("openGift");
 
 
 if (openGift) {
 
-  openGift.addEventListener("click", () => {
+  openGift.addEventListener(
+    "click",
+    () => {
 
-    gift.classList.add("open");
+      gift.classList.add(
+        "open"
+      );
 
-    openGift.disabled = true;
+      openGift.disabled = true;
 
-    openGift.textContent =
-      "Opening... 💗";
+      openGift.textContent =
+        "Opening...";
 
-    setTimeout(() => {
+      setTimeout(() => {
 
-      showScreen("final");
+        showScreen("final");
 
-    }, 1000);
+      }, 1000);
 
-  });
+    }
+  );
 
 }
 
@@ -329,99 +408,128 @@ if (openGift) {
    RESTART
 ========================= */
 
-const restart = $("#restart");
+const restart =
+  document.getElementById("restart");
 
 
 if (restart) {
 
-  restart.addEventListener("click", () => {
+  restart.addEventListener(
+    "click",
+    () => {
 
-    photoIndex = 0;
+      photoIndex = 0;
 
-    updatePhoto(0);
+      updatePhoto(0);
 
-    flame.style.opacity = "1";
-    flame.style.transform = "scale(1)";
+      if (flame) {
 
-    blowBtn.classList.remove("hidden");
-    afterBlow.classList.add("hidden");
+        flame.style.opacity =
+          "1";
 
-    envelope.classList.remove("open");
-    letterBox.classList.remove("show");
+        flame.style.transform =
+          "rotate(45deg) scale(1)";
 
-    letterNext.classList.add("hidden");
+      }
 
-    gift.classList.remove("open");
+      if (blowBtn)
+        blowBtn.classList.remove(
+          "hidden"
+        );
 
-    openGift.disabled = false;
+      if (afterBlow)
+        afterBlow.classList.add(
+          "hidden"
+        );
 
-    openGift.textContent =
-      "Open My Gift ✨";
+      if (envelope)
+        envelope.classList.remove(
+          "open"
+        );
 
-    showScreen("welcome");
+      if (letterBox)
+        letterBox.classList.remove(
+          "show"
+        );
 
-  });
+      if (letterNext)
+        letterNext.classList.add(
+          "hidden"
+        );
 
-}
+      if (gift)
+        gift.classList.remove(
+          "open"
+        );
 
+      if (openGift) {
 
-/* =========================
-   CLICK HEART EFFECT
-========================= */
+        openGift.disabled =
+          false;
 
-document.addEventListener("click", (event) => {
+        openGift.textContent =
+          "Open My Gift";
 
-  const heart =
-    document.createElement("div");
+      }
 
-  heart.textContent = "💗";
+      showScreen("welcome");
 
-  heart.style.position = "fixed";
-
-  heart.style.left =
-    event.clientX + "px";
-
-  heart.style.top =
-    event.clientY + "px";
-
-  heart.style.zIndex = "9999";
-
-  heart.style.pointerEvents = "none";
-
-  heart.style.fontSize = "17px";
-
-  heart.style.transition =
-    "all .8s ease";
-
-  document.body.appendChild(heart);
-
-  requestAnimationFrame(() => {
-
-    heart.style.transform =
-      "translateY(-45px) scale(1.4)";
-
-    heart.style.opacity = "0";
-
-  });
-
-  setTimeout(() => {
-
-    heart.remove();
-
-  }, 850);
-
-});
-
-
-/* =========================
-   INITIAL HEARTS
-========================= */
-
-for (let i = 0; i < 8; i++) {
-
-  setTimeout(
-    createHeart,
-    i * 400
+    }
   );
 
 }
+
+
+/* =========================
+   CLICK HEART
+========================= */
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target.closest("button") ||
+      event.target.closest("img")
+    ) {
+      return;
+    }
+
+    const heart =
+      document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.style.position =
+      "fixed";
+
+    heart.style.left =
+      event.clientX + "px";
+
+    heart.style.top =
+      event.clientY + "px";
+
+    heart.style.bottom =
+      "auto";
+
+    heart.style.zIndex =
+      "9999";
+
+    heart.style.pointerEvents =
+      "none";
+
+    heart.style.animationDuration =
+      ".8s";
+
+    document.body.appendChild(
+      heart
+    );
+
+    setTimeout(() => {
+
+      heart.remove();
+
+    }, 850);
+
+  }
+);
