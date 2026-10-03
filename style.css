@@ -1,1 +1,66 @@
+let currentStep = 1;
+let poppedCount = 0;
+let revealedWords = [];
 
+// Screen Navigation
+function nextStep(stepNumber) {
+    document.getElementById(step${currentStep}).classList.remove('active');
+    document.getElementById(step${stepNumber}).classList.add('active');
+    currentStep = stepNumber;
+}
+
+// Balloon Pop Event
+function popBalloon(element, word) {
+    if (element.style.visibility === 'hidden') return;
+    
+    element.style.visibility = 'hidden';
+    revealedWords.push(word);
+    document.getElementById('balloon-text').innerText = revealedWords.join(' ');
+    poppedCount++;
+
+    if (poppedCount === 4) {
+        document.getElementById('step2-next').classList.remove('hidden');
+    }
+}
+
+// Blow Candle Event
+function blowCandle() {
+    const flame = document.getElementById('flame');
+    if (flame && flame.style.display !== 'none') {
+        flame.style.display = 'none';
+        document.getElementById('candle-status').innerText = 'Make a wish! ✨';
+        document.getElementById('step3-next').classList.remove('hidden');
+    }
+}
+
+// Photos Carousel (Exact filenames uploaded in GitHub)
+const photos = [
+    { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating You! 🎉' },
+    { src: 'Snapchat-1124254100.jpg', caption: 'Make a Wish ✨' }
+];
+
+let photoIndex = 0;
+
+function nextPhoto() {
+    photoIndex++;
+    if (photoIndex < photos.length) {
+        document.getElementById('gallery-img').src = photos[photoIndex].src;
+        document.getElementById('gallery-caption').innerText = photos[photoIndex].caption;
+    } 
+    // Show next button after clicking through photos
+    if (photoIndex >= photos.length - 1) {
+        document.getElementById('step5-next').classList.remove('hidden');
+    }
+}
+
+// Open Envelope Letter
+function openLetter() {
+    document.querySelector('.envelope').style.display = 'none';
+    document.getElementById('letter-content').classList.remove('hidden');
+}
+
+// Open Gift Box
+function openGift() {
+    document.querySelector('.gift-box').style.display = 'none';
+    document.getElementById('gift-message').classList.remove('hidden');
+  }
