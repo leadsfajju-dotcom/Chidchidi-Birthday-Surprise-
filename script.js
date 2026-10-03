@@ -6,12 +6,14 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffe6eb !important;
+    background: linear-gradient(135deg, #fde2e4 0%, #fbcfe8 100%) !important;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 20px;
+    color: #4a5568;
+    overflow-x: hidden;
 }
 
 .card {
@@ -21,179 +23,205 @@ body {
     text-align: center;
     background: #ffffff;
     width: 100%;
-    max-width: 380px;
-    padding: 30px 20px;
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(244, 143, 177, 0.4);
-    border: 2px solid #f8bbd0;
-    animation: fadeIn 0.5s ease-in-out;
+    max-width: 400px;
+    padding: 35px 25px;
+    border-radius: 28px;
+    box-shadow: 0 20px 40px rgba(244, 114, 182, 0.25);
+    border: 2px solid #fbcfe8;
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card.active {
     display: flex !important;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 h1, h2 {
-    color: #c2185b;
-    margin-bottom: 15px;
+    color: #db2777;
     font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
 }
 
-.highlight {
-    color: #e91e63;
+.highlight-name {
+    color: #be185d;
+    font-weight: 700;
 }
 
 .subtext {
-    color: #777;
+    color: #718096;
     font-size: 14px;
     margin-bottom: 20px;
 }
 
 .btn-primary {
-    background: #ec407a;
+    background: #ec4899;
     color: white;
     border: none;
     padding: 12px 30px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(236, 64, 122, 0.4);
-    transition: 0.3s;
-    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+    transition: all 0.2s ease;
+    margin-top: 10px;
 }
 
 .btn-primary:hover {
-    background: #d81b60;
-    transform: scale(1.05);
+    background: #db2777;
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background: #f8bbd0;
-    color: #c2185b;
+    background: #fce7f3;
+    color: #db2777;
     border: none;
     padding: 12px 25px;
     font-size: 16px;
-    border-radius: 25px;
+    font-weight: 500;
+    border-radius: 50px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .btn-group {
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    justify-content: center;
 }
 
 .hidden {
     display: none !important;
 }
 
-.bears-img { font-size: 50px; margin-bottom: 10px; }
-.bouquet-icon { font-size: 90px; margin: 20px 0; }
-.gift-box { font-size: 80px; cursor: pointer; margin: 20px 0; animation: bounce 1.5s infinite; }
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Balloons */
-.balloon-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+.bears-header {
     font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.balloon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
     margin: 20px 0;
 }
 
-.balloon {
+.balloon-item {
     cursor: pointer;
+    font-size: 60px;
     transition: transform 0.2s;
+    user-select: none;
 }
 
-.balloon:hover { transform: scale(1.2); }
+.balloon-item:hover {
+    transform: scale(1.15);
+}
 
-.revealed-text {
-    font-family: 'Caveat', cursive;
+.popped-word {
+    font-family: 'Dancing Script', cursive;
     font-size: 30px;
-    color: #e91e63;
-    min-height: 45px;
+    color: #be185d;
     margin-top: 10px;
+    min-height: 40px;
 }
 
-/* Cake & Flame */
-.cake-container {
+.cake-wrapper {
     position: relative;
-    font-size: 90px;
     cursor: pointer;
     margin: 20px 0;
+    display: inline-block;
 }
 
-.flame {
+.cake-emoji { font-size: 90px; }
+
+.flame-emoji {
     position: absolute;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 35px;
-    animation: flicker 0.5s infinite alternate;
+    font-size: 30px;
+    animation: flicker 0.6s infinite alternate;
 }
 
 @keyframes flicker {
-    0% { opacity: 1; transform: translateX(-50%) scale(1); }
-    100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
 }
 
-/* Polaroid Photo Card */
-.polaroid-wrapper {
-    cursor: pointer;
+.bouquet-img {
+    font-size: 100px;
     margin: 15px 0;
+}
+
+.polaroid-stack {
+    width: 250px;
+    margin: 15px auto;
+    cursor: pointer;
 }
 
 .polaroid-card {
     background: white;
-    padding: 12px 12px 20px 12px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border: 1px solid #eee;
-    transform: rotate(-2deg);
-    transition: 0.3s;
+    padding: 12px 12px 18px 12px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    border: 1px solid #f3f4f6;
 }
 
 .polaroid-card img {
     width: 100%;
-    max-width: 260px;
-    height: 260px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 6px;
-    display: block;
+    border-radius: 8px;
 }
 
-.handwritten {
-    font-family: 'Caveat', cursive;
-    font-size: 26px;
-    color: #444;
-    margin-top: 10px;
+.polaroid-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #374151;
+    margin-top: 8px;
 }
 
-/* Letter */
-.envelope { font-size: 70px; cursor: pointer; margin: 20px 0; }
-.letter-box {
-    background: #fff8fa;
-    border: 2px dashed #f48fb1;
+.envelope-wrapper {
+    font-size: 80px;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.letter-paper {
+    background: #fffdfa;
+    border: 2px dashed #f472b6;
     padding: 20px;
-    border-radius: 15px;
-    margin-top: 10px;
+    border-radius: 16px;
+    margin-top: 15px;
+    text-align: left;
 }
 
-.handwritten-letter {
-    font-family: 'Caveat', cursive;
+.letter-text {
+    font-family: 'Dancing Script', cursive;
     font-size: 22px;
-    color: #880e4f;
-    line-height: 1.4;
-    text-align: left;
-        }
+    color: #831843;
+    line-height: 1.5;
+}
+
+.gift-box-emoji {
+    font-size: 85px;
+    cursor: pointer;
+    margin: 15px 0;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.confetti-bears {
+    font-size: 60px;
+    margin-bottom: 10px;
+    }
