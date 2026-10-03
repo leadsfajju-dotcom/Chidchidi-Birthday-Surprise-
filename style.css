@@ -1,57 +1,54 @@
 let currentStep = 1;
 let poppedCount = 0;
-let revealedWords = [];
+let balloonWords = [];
 
-function nextStep(stepNumber) {
+function goToStep(stepNum) {
     document.getElementById(step${currentStep}).classList.remove('active');
-    document.getElementById(step${stepNumber}).classList.add('active');
-    currentStep = stepNumber;
+    document.getElementById(step${stepNum}).classList.add('active');
+    currentStep = stepNum;
 }
 
 function popBalloon(element, word) {
-    if (element.style.visibility === 'hidden') return;
-    element.style.visibility = 'hidden';
-    revealedWords.push(word);
-    document.getElementById('balloon-text').innerText = revealedWords.join(' ');
+    if (element.style.opacity === '0') return;
+    element.style.opacity = '0';
+    element.style.pointerEvents = 'none';
+    balloonWords.push(word);
+    document.getElementById('revealed-msg').innerText = balloonWords.join(' ');
     poppedCount++;
     if (poppedCount === 4) {
-        document.getElementById('step2-next').classList.remove('hidden');
+        document.getElementById('btn-step2').classList.remove('hidden');
     }
 }
 
 function blowCandle() {
     const flame = document.getElementById('flame');
-    if (flame && flame.style.display !== 'none') {
+    if (flame) {
         flame.style.display = 'none';
-        document.getElementById('candle-status').innerText = 'Make a wish, Chidchidi! ✨';
-        document.getElementById('step3-next').classList.remove('hidden');
+        document.getElementById('candle-hint').innerText = 'Make a wish! ✨';
+        document.getElementById('btn-step3').classList.remove('hidden');
     }
 }
 
-const photos = [
-    { src: 'IMG_20261003_150001.jpg', caption: 'My Favorite Chidchidi! 🎉' },
-    { src: 'Snapchat-1124254100.jpg', caption: 'Make a Wish Chidchidi ✨' }
+const gallery = [
+    { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating you! 🎉' },
+    { src: 'Snapchat-1124254100.jpg', caption: 'Make a wish ✨' }
 ];
-let photoIndex = 0;
+let galleryIdx = 0;
 
-function nextPhoto() {
-    photoIndex++;
-    if (photoIndex < photos.length) {
-        document.getElementById('gallery-img').src = photos[photoIndex].src;
-        document.getElementById('gallery-caption').innerText = photos[photoIndex].caption;
-    }
-    if (photoIndex >= photos.length - 1) {
-        document.getElementById('step5-next').classList.remove('hidden');
-    }
+function cyclePhotos() {
+    galleryIdx = (galleryIdx + 1) % gallery.length;
+    document.getElementById('photo-display').src = gallery[galleryIdx].src;
+    document.getElementById('photo-caption').innerText = gallery[galleryIdx].caption;
 }
 
-function openLetter() {
-    document.querySelector('.envelope').style.display = 'none';
-    document.getElementById('env-hint').style.display = 'none';
-    document.getElementById('letter-content').classList.remove('hidden');
+function openEnvelope() {
+    document.getElementById('envelope-btn').style.display = 'none';
+    document.getElementById('env-subtext').style.display = 'none';
+    document.getElementById('letter-box').classList.remove('hidden');
 }
 
-function openGift() {
-    document.querySelector('.gift-box').style.display = 'none';
-    document.getElementById('gift-message').classList.remove('hidden');
+function openFinalGift() {
+    document.getElementById('gift-btn').style.display = 'none';
+    document.getElementById('gift-hint').style.display = 'none';
+    document.getElementById('final-surprise').classList.remove('hidden');
         }
