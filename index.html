@@ -1,291 +1,440 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Chidchidi 💗</title>
+const $ = (selector) =>
+document.querySelector(selector);
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+const $$ = (selector) =>
+[...document.querySelectorAll(selector)];
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-</head>
+/* ALL SCREENS */
 
-<body>
+const screens = [
+"welcome",
+"balloons",
+"candle",
+"bouquet",
+"memories",
+"letter",
+"giftScreen",
+"final"
+];
 
-<div id="hearts"></div>
 
-<main class="app">
+function go(screenName){
 
-<!-- ================= WELCOME ================= -->
+screens.forEach(name => {
 
-<section class="screen active" id="welcome">
+const screen =
+document.getElementById(name);
 
-<div class="content">
+if(screen){
 
-<div class="top-hearts">♥ ✦ ♥</div>
+screen.classList.toggle(
+"active",
+name === screenName
+);
 
-<h1>
-Happy Birthday,
-<br>
-<strong>CHIDCHIDI</strong>
-</h1>
+}
 
-<div class="characters">
+});
 
-<div class="bear">🐻</div>
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-<div class="cake-emoji">🎂</div>
+createHearts(6);
 
-<div class="bunny">🐰</div>
+}
 
-<div class="sparkles">
-✦ ♥ ✦
-</div>
 
-</div>
+/* FLOATING HEARTS */
 
-<p class="small">
-Are you excited for your special day?
-</p>
+function createHearts(number = 2){
 
-<div class="choice">
+for(let i=0;i<number;i++){
 
-<button id="yes" class="pink-btn">
-Yes
-</button>
+const heart =
+document.createElement("span");
 
-<button id="no" class="white-btn">
-No
-</button>
+heart.className = "float";
 
-</div>
+heart.textContent =
+Math.random() > .25
+? "♥"
+: "✦";
 
-</div>
+heart.style.left =
+Math.random()*100 + "%";
 
-</section>
+heart.style.fontSize =
+(10 + Math.random()*15) + "px";
 
+heart.style.animationDuration =
+(5 + Math.random()*4) + "s";
 
-<!-- ================= BALLOONS ================= -->
+document.getElementById("hearts")
+.appendChild(heart);
 
-<section class="screen" id="balloons">
+setTimeout(
+() => heart.remove(),
+9500
+);
 
-<div class="content">
+}
 
-<h2>
-Pop all 4 balloons
-</h2>
+}
 
-<p class="hint">
-Pop them one by one 💗
-</p>
 
-<div class="balloon-stage">
+setInterval(
+() => createHearts(1),
+1700
+);
 
-<button class="balloon one" data-word="You">🎈</button>
+createHearts(8);
 
-<button class="balloon two" data-word="are">🎈</button>
 
-<button class="balloon three" data-word="so">🎈</button>
+/* YES */
 
-<button class="balloon four" data-word="special">🎈</button>
+$("#yes").onclick = () => {
 
-</div>
+go("balloons");
 
-<div class="words" id="words"></div>
+};
 
-<button class="continue hidden" id="toCandle">
-Continue →
-</button>
 
-</div>
+/* NO BUTTON */
 
-</section>
+$("#no").onmouseenter = () => {
 
+const button = $("#no");
 
-<!-- ================= CANDLE ================= -->
+const x =
+Math.random()*100 - 50;
 
-<section class="screen" id="candle">
+const y =
+Math.random()*40 - 20;
 
-<div class="content">
+button.style.transform =
+translate(${x}px,${y}px);
 
-<h2>
-Blow the candle,
-<br>
-CHIDCHIDI
-</h2>
+};
 
-<div class="cake-scene">
 
-<div class="flame" id="flame">
-🔥
-</div>
+/* BALLOONS */
 
-<div class="candle-stick"></div>
+let popped = 0;
 
-<div class="cake-top"></div>
+$$(".balloon").forEach(
+balloon => {
 
-<div class="cake-body"></div>
+balloon.onclick = () => {
 
-<div class="plate"></div>
+if(
+balloon.classList.contains(
+"popped"
+)
+){
+return;
+}
 
-</div>
+balloon.classList.add(
+"popped"
+);
 
-<div class="wish">
+popped++;
 
-Close your eyes
-<br>
-&amp; make a wish
+const word =
+document.createElement("span");
 
-</div>
+word.textContent =
+balloon.dataset.word;
 
-<button class="continue" id="blow">
-✨ Blow the candle
-</button>
+word.className =
+"word";
 
-</div>
+$("#words").appendChild(word);
 
-</section>
+createHearts(3);
 
+if(popped === 4){
 
-<!-- ================= BOUQUET ================= -->
+setTimeout(
+() => {
 
-<section class="screen" id="bouquet">
+$("#toCandle")
+.classList
+.remove("hidden");
 
-<div class="content">
+},
+500
+);
 
-<h2>
-A Rose Bouquet For You 🌹
-</h2>
+}
 
-<p class="hint">
-Just for my CHIDCHIDI
-</p>
+};
 
-<div class="bouquet-art">
+});
 
-<div class="roses">
-🌹 🌹
-<br>
-🌹 🌹 🌹
-</div>
 
-<div class="paper"></div>
+$("#toCandle").onclick =
+() => {
 
-<div class="bow">
-🎀
-</div>
+go("candle");
 
-</div>
+};
 
-<button class="continue" id="toMemories">
-Continue →
-</button>
 
-</div>
+/* CANDLE */
 
-</section>
+$("#blow").onclick = () => {
 
+$(".cake-scene")
+.classList
+.add("blown");
 
-<!-- ================= PHOTO MEMORIES ================= -->
+$(".wish").innerHTML =
+"Wish made? ✨<br>" +
+"<small>May it come true.</small>";
 
-<section class="screen" id="memories">
+$("#blow")
+.classList
+.add("hidden");
 
-<div class="content">
+createHearts(12);
 
-<h2>
-Some Sweet Moments
-</h2>
+setTimeout(
+() => {
 
-<p class="hint">
-Swipe the card ❤️
-</p>
+go("bouquet");
 
-<div class="photo-card" id="photoCard">
+},
+1300
+);
 
-<div class="photo-top">
+};
 
-<span>♥</span>
 
-<img
-id="photo"
-src="IMG_20261003_150001.jpg"
-alt="Chidchidi Memory"
->
+/* BOUQUET */
 
-</div>
+$("#toMemories").onclick =
+() => {
 
-<div class="caption" id="caption">
-Happy Birthday! 💗
-</div>
+go("memories");
 
-</div>
+};
 
-<div class="dots" id="dots">
 
-<i class="active"></i>
-<i></i>
-<i></i>
+/* PHOTO CARDS */
 
-</div>
+const photos = [
 
-<button class="continue" id="toLetter">
-Continue →
-</button>
+{
+src:
+"IMG_20261003_150001.jpg",
 
-</div>
+text:
+"Happy Birthday! 💗"
+},
 
-</section>
+{
+src:
+"Snapchat-1124254100.jpg",
 
+text:
+"Make a beautiful wish! 🌹"
+},
 
-<!-- ================= ENVELOPE ================= -->
+{
+src:
+"IMG_20261003_150001.jpg",
 
-<section class="screen" id="letter">
+text:
+"Celebrating my special CHIDCHIDI ✨"
+}
 
-<div class="content">
+];
 
-<h2>
-A Message From My Heart
-</h2>
 
-<div class="envelope" id="envelope">
+let photoIndex = 0;
 
-<div class="env-paper"></div>
 
-<div class="env-flap"></div>
+function showPhoto(){
 
-<div class="seal">
-♥
-</div>
+const current =
+photos[photoIndex];
 
-</div>
+$("#photo").src =
+current.src;
 
-<p class="hint" id="tap">
-Tap the envelope 💌
-</p>
+$("#caption").textContent =
+current.text;
 
 
-<article class="letter hidden" id="letterCard">
+$$(".dots i").forEach(
+(dot,index) => {
 
-<div class="pin">
-♥
-</div>
+dot.classList.toggle(
+"active",
+index === photoIndex
+);
 
-<p>
-Dear <b>CHIDCHIDI</b>,
-</p>
+});
 
-<p>
-Happy Birthday to someone truly special! 🎂
-</p>
+}
 
-<p>
-You are sweet, loyal, my rock, and I’m so grateful to have you in my life.
-</p>
 
-<p>
-You bring so much warmth and sweetness into my life.
-Every moment with you is precious.
-        </p>
+showPhoto();
+
+
+function nextPhoto(){
+
+photoIndex =
+(photoIndex + 1)
+% photos.length;
+
+showPhoto();
+
+}
+
+
+function previousPhoto(){
+
+photoIndex =
+(photoIndex - 1 + photos.length)
+% photos.length;
+
+showPhoto();
+
+}
+
+
+/* CLICK PHOTO */
+
+$("#photoCard").onclick =
+() => {
+
+nextPhoto();
+
+};
+
+
+/* SWIPE */
+
+let startX = 0;
+
+
+$("#photoCard").addEventListener(
+"touchstart",
+event => {
+
+startX =
+event.touches[0].clientX;
+
+},
+{
+passive:true
+}
+);
+
+
+$("#photoCard").addEventListener(
+"touchend",
+event => {
+
+const endX =
+event.changedTouches[0].clientX;
+
+const difference =
+endX - startX;
+
+if(
+Math.abs(difference) > 45
+){
+
+if(difference < 0){
+
+nextPhoto();
+
+}else{
+
+previousPhoto();
+
+}
+
+}
+
+}
+);
+
+
+/* NEXT TO LETTER */
+
+$("#toLetter").onclick =
+() => {
+
+go("letter");
+
+};
+
+
+/* ENVELOPE */
+
+$("#envelope").onclick =
+() => {
+
+$("#envelope")
+.classList
+.add("open");
+
+$("#tap")
+.classList
+.add("hidden");
+
+$("#letterCard")
+.classList
+.remove("hidden");
+
+$("#toGift")
+.classList
+.remove("hidden");
+
+createHearts(12);
+
+};
+
+
+/* LETTER TO GIFT */
+
+$("#toGift").onclick =
+() => {
+
+go("giftScreen");
+
+};
+
+
+/* GIFT */
+
+$("#gift").onclick =
+() => {
+
+createHearts(25);
+
+go("final");
+
+};
+
+
+/* FINAL BUTTONS */
+
+$("#love").onclick =
+() => {
+
+$("#note").textContent =
+"Dear Chidchidi, you deserve all the happiness, love and smiles in the world. 💌";
+
+};
+
+
+$("#sorry").onclick =
+() => {
