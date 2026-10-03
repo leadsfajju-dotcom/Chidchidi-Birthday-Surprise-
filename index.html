@@ -3,326 +3,408 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <title>Happy Birthday Chidchidi 💗</title>
+  <title>Happy Birthday Chidchidi</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
-
 </head>
 
 <body>
 
-  <div id="hearts"></div>
+<div id="hearts"></div>
 
-  <!-- WELCOME -->
-  <section class="screen active" id="welcome">
-    <div class="content">
+<!-- ================= WELCOME ================= -->
 
-      <div class="small-text">A LITTLE SURPRISE FOR YOU</div>
+<section class="screen active" id="welcome">
 
-      <h1>
-        Happy Birthday
-        <span>Chidchidi</span>
-      </h1>
+  <div class="decor decor-heart heart-one"></div>
+  <div class="decor decor-heart heart-two"></div>
+
+  <div class="content">
+
+    <div class="eyebrow">A LITTLE SURPRISE FOR YOU</div>
+
+    <h1 class="hero-title">
+      Happy Birthday
+      <span>Chidchidi</span>
+    </h1>
+
+    <p class="intro">
+      Today is all about one very special person.
+    </p>
+
+    <button class="main-btn" data-next="balloons">
+      Start the Surprise
+      <span class="sparkle-icon">✦</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= BALLOONS ================= -->
+
+<section class="screen" id="balloons">
+
+  <div class="balloon balloon-a">
+    <span></span>
+  </div>
+
+  <div class="balloon balloon-b">
+    <span></span>
+  </div>
+
+  <div class="balloon balloon-c">
+    <span></span>
+  </div>
+
+  <div class="balloon balloon-d">
+    <span></span>
+  </div>
+
+  <div class="content">
+
+    <div class="celebration-icon">
+      <div class="mini-balloon pink"></div>
+      <div class="mini-balloon rose"></div>
+      <div class="mini-balloon light"></div>
+    </div>
+
+    <h2>Let the celebration begin</h2>
+
+    <p>
+      Some people make ordinary days feel special.<br>
+      Today, we celebrate you.
+    </p>
+
+    <button class="main-btn" data-next="candle">
+      Keep Going
+      <span class="sparkle-icon">✦</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CANDLE ================= -->
+
+<section class="screen" id="candle">
+
+  <div class="content">
+
+    <div class="cake">
+
+      <div class="flame" id="flame"></div>
+
+      <div class="candle-stick"></div>
+
+      <div class="cake-top"></div>
+
+      <div class="cake-body">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+
+    </div>
+
+    <h2>Make a Birthday Wish</h2>
+
+    <p>
+      Close your eyes for a moment.<br>
+      Make your sweetest wish.
+    </p>
+
+    <button class="main-btn" id="blowBtn">
+      Blow the Candle
+    </button>
+
+    <button class="main-btn hidden" id="afterBlow" data-next="bouquet">
+      My Wish For You
+      <span class="sparkle-icon">✦</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FLOWERS ================= -->
+
+<section class="screen" id="bouquet">
+
+  <div class="content">
+
+    <div class="flower-bouquet">
+
+      <div class="flower flower-one">
+        <b></b>
+      </div>
+
+      <div class="flower flower-two">
+        <b></b>
+      </div>
+
+      <div class="flower flower-three">
+        <b></b>
+      </div>
+
+      <div class="stem stem-one"></div>
+      <div class="stem stem-two"></div>
+      <div class="stem stem-three"></div>
+
+    </div>
+
+    <h2>A Little Bouquet For You</h2>
+
+    <p>
+      Because you deserve beautiful things,<br>
+      beautiful moments and lots of reasons to smile.
+    </p>
+
+    <div class="signature">
+      With lots of love
+      <span class="tiny-heart">♥</span>
+    </div>
+
+    <button class="main-btn" data-next="memories">
+      See Our Memories
+      <span class="camera-icon"></span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MEMORIES ================= -->
+
+<section class="screen" id="memories">
+
+  <div class="content">
+
+    <div class="eyebrow">A FEW SPECIAL MOMENTS</div>
+
+    <h2>Our Little Memories</h2>
+
+    <div class="memory-symbol">
+      <span></span>
+      <i></i>
+    </div>
+
+    <div class="photo-card">
+
+<div class="photo-frame">
+        <img id="photo" src="IMG_20261003_150001.jpg" alt="Our memory">
+      </div>
+
+      <div class="photo-caption" id="photoCaption">
+        A beautiful memory
+        <span class="flower-dot">✿</span>
+      </div>
+
+    </div>
+
+    <div class="memory-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="photo-buttons">
+
+      <button class="round-btn" id="prevPhoto">
+        ←
+      </button>
+
+      <button class="round-btn" id="nextPhoto">
+        →
+      </button>
+
+    </div>
+
+    <button class="main-btn memory-next" data-next="letter">
+      There's Something For You
+      <span class="envelope-mini"></span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LETTER ================= -->
+
+<section class="screen" id="letter">
+
+  <div class="content">
+
+    <div class="envelope" id="envelope">
+
+      <div class="envelope-flap"></div>
+
+      <div class="envelope-body">
+
+        <div class="seal">
+          <span>♥</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <h2>One Little Message...</h2>
+
+    <p id="letterHint">
+      Tap the envelope to open it
+      <span class="tiny-heart">♥</span>
+    </p>
+
+    <div class="letter-box" id="letterBox">
+
+      <div class="letter-title">
+        For My Chidchidi
+        <span>♥</span>
+      </div>
 
       <p>
-        Today is all about one very special person...
+        Whatever happens, your smile will always
+        be special to me.
       </p>
-
-      <button class="main-btn" data-next="balloons">
-        Start the Surprise ✨
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- BALLOONS -->
-  <section class="screen" id="balloons">
-
-    <div class="balloon b1">🎈</div>
-    <div class="balloon b2">🎈</div>
-    <div class="balloon b3">🎈</div>
-    <div class="balloon b4">🎈</div>
-    <div class="balloon b5">🎈</div>
-
-    <div class="content">
-
-      <div class="emoji-big">🎈</div>
-
-      <h2>Let the celebration begin!</h2>
 
       <p>
-        Some people make ordinary days feel special.
-        <br>
-        Today, we celebrate you. 💗
+        I hope this birthday brings you countless
+        beautiful moments, happiness and reasons
+        to smile.
       </p>
-
-      <button class="main-btn" data-next="candle">
-        Keep Going 💕
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- CANDLE -->
-  <section class="screen" id="candle">
-
-    <div class="content">
-
-      <div class="cake">
-
-        <div class="flame" id="flame">🔥</div>
-
-        <div class="candle-stick"></div>
-
-        <div class="cake-top"></div>
-
-        <div class="cake-body">
-          <span>♡</span>
-          <span>♡</span>
-          <span>♡</span>
-        </div>
-
-      </div>
-
-      <h2>Make a Birthday Wish 🕯️</h2>
 
       <p>
-        Close your eyes for a moment...
-        <br>
-        Make your sweetest wish. ✨
+        Keep shining, keep smiling and always be
+        the amazing person you are.
       </p>
 
-      <button class="main-btn" id="blowBtn">
-        Blow the Candle 💨
-      </button>
-
-      <button class="main-btn hidden" id="afterBlow" data-next="bouquet">
-        My Wish For You 🌸
-      </button>
+      <div class="letter-sign">
+        Happy Birthday!
+        <span class="cake-mini"></span>
+      </div>
 
     </div>
-  </section>
+
+    <button class="main-btn hidden" id="letterNext" data-next="giftScreen">
+      One More Surprise
+      <span class="gift-mini"></span>
+    </button>
+
+  </div>
+
+</section>
 
 
-  <!-- BOUQUET -->
-  <section class="screen" id="bouquet">
+<!-- ================= GIFT ================= -->
 
-    <div class="content">
+<section class="screen" id="giftScreen">
 
-      <div class="bouquet">🌹🌷🌹</div>
+  <div class="content">
 
-      <h2>A Little Bouquet For You</h2>
+    <div class="gift" id="gift">
+
+      <div class="gift-lid">
+        <div class="gift-bow"></div>
+      </div>
+
+      <div class="gift-box">
+        <div class="gift-ribbon-v"></div>
+        <div class="gift-ribbon-h"></div>
+      </div>
+
+    </div>
+
+    <h2>There's One Last Surprise...</h2>
+
+    <p>
+      You have come this far.<br>
+      Now open your gift.
+    </p>
+
+    <button class="main-btn" id="openGift">
+      Open My Gift
+      <span class="sparkle-icon">✦</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="screen" id="final">
+
+  <div class="final-glow"></div>
+
+  <div class="content">
+
+    <div class="final-hearts">
+      <span>♥</span>
+      <i>♥</i>
+      <span>♥</span>
+    </div>
+
+    <div class="eyebrow">TODAY & ALWAYS</div>
+
+    <h1 class="final-title">
+      Happy Birthday
+      <span>Chidchidi</span>
+    </h1>
+
+    <div class="final-message">
 
       <p>
-        Because you deserve beautiful things,
-        beautiful moments,
-        and lots of reasons to smile.
+        May your life always be filled with happiness,
+        laughter and beautiful surprises.
       </p>
-
-      <div class="signature">
-        With lots of love 💗
-      </div>
-
-      <button class="main-btn" data-next="memories">
-        See Our Memories 📸
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- MEMORIES -->
-  <section class="screen" id="memories">
-
-    <div class="content">
-
-      <div class="small-text">A FEW SPECIAL MOMENTS</div>
-
-      <h2>Our Little Memories 💕</h2>
-
-      <div class="photo-card">
-
-        <div class="photo-frame">
-          <img
-            id="photo"
-            src="IMG_20261003_150001.jpg"
-            alt="Memory">
-        </div>
-
-        <div class="photo-caption" id="photoCaption">
-          Happy Birthday! 💗
-        </div>
-
-      </div>
-
-      <div class="memory-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-
-      <div class="photo-buttons">
-        <button class="round-btn" id="prevPhoto">←</button>
-        <button class="round-btn" id="nextPhoto">→</button>
-      </div>
-
-      <button class="main-btn" data-next="letter">
-        There's Something For You 💌
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- LETTER -->
-  <section class="screen" id="letter">
-
-    <div class="content">
-
-      <div class="envelope" id="envelope">
-
-        <div class="envelope-top"></div>
-
-        <div class="envelope-body">
-          <div class="heart-seal">♥</div>
-        </div>
-
-</div>
-
-<h2>One Little Message...</h2>
-
-      <p id="letterHint">
-        Tap the envelope to open it 💌
-      </p>
-
-      <div class="letter-box" id="letterBox">
-
-        <div class="letter-title">
-          For My Chidchidi 💗
-        </div>
-
-        <p>
-          Whatever happens, your smile will always be
-          special to me.
-        </p>
-
-        <p>
-          I hope this birthday brings you countless
-          beautiful moments, happiness and reasons to smile.
-        </p>
-
-        <p>
-          Keep shining, keep smiling and always be
-          the amazing person you are. ✨
-        </p>
-
-        <div class="letter-sign">
-          Happy Birthday! 🎂💗
-        </div>
-
-      </div>
-
-      <button class="main-btn hidden" id="letterNext" data-next="giftScreen">
-        One More Surprise 🎁
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- GIFT -->
-  <section class="screen" id="giftScreen">
-
-    <div class="content">
-
-      <div class="gift" id="gift">
-
-        <div class="gift-lid"></div>
-
-        <div class="gift-box">
-          <div class="gift-ribbon-v"></div>
-          <div class="gift-ribbon-h"></div>
-        </div>
-
-      </div>
-
-      <h2>There's One Last Surprise...</h2>
 
       <p>
-        You have come this far.
-        <br>
-        Now open your gift. 🎁
+        Keep smiling... because your smile makes
+        everything better.
+        <span class="tiny-heart">♥</span>
       </p>
 
-      <button class="main-btn" id="openGift">
-        Open My Gift ✨
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- FINAL -->
-  <section class="screen" id="final">
-
-    <div class="final-glow"></div>
-
-    <div class="content">
-
-      <div class="final-hearts">
-        💗 💕 💗
-      </div>
-
-      <div class="small-text">
-        TODAY & ALWAYS
-      </div>
-
-      <h1>
-        Happy Birthday
-        <span>Chidchidi</span>
-      </h1>
-
-      <div class="final-message">
-
-        <p>
-          May your life always be filled with
-          happiness, laughter and beautiful surprises.
-        </p>
-
-        <p>
-          Keep smiling...
-          because your smile makes everything better. 💗
-        </p>
-
-      </div>
-
-      <div class="birthday-cake">
-        🎂
-      </div>
-
-      <div class="final-sign">
-        Have the most beautiful birthday! ✨
-      </div>
-
-      <button class="main-btn" id="restart">
-        Watch Again ↻
-      </button>
-
     </div>
 
-  </section>
+    <div class="final-cake">
+      <div class="final-cake-top"></div>
+      <div class="final-cake-body"></div>
+      <div class="final-flames">
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+
+    <div class="final-sign">
+      Have the most beautiful birthday!
+      <span>✦</span>
+    </div>
+
+    <button class="main-btn" id="restart">
+      Watch Again ↻
+    </button>
+
+  </div>
+
+</section>
 
 
-  <script src="./script.js"></script>
+<script src="./script.js"></script>
 
 </body>
   </html>
