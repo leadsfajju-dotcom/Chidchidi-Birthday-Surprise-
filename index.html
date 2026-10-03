@@ -1,26 +1,156 @@
-const gallery = [
-            { src: 'IMG_20261003_150001.jpg', caption: 'Celebrating you! 🎉' },
-            { src: 'Snapchat-1124254100.jpg', caption: 'Make a wish ✨' }
-        ];
-        let galleryIdx = 0;
+<button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
 
-        function cyclePhotos() {
-            galleryIdx = (galleryIdx + 1) % gallery.length;
-            document.getElementById('photo-display').src = gallery[galleryIdx].src;
-            document.getElementById('photo-caption').innerText = gallery[galleryIdx].caption;
-        }
+      </div>
 
-        function openEnvelope() {
-            document.getElementById('envelope-btn').style.display = 'none';
-            document.getElementById('env-subtext').style.display = 'none';
-            document.getElementById('letter-box').classList.remove('hidden');
-        }
+      <button class="next-btn" id="memoryNext">
+        Continue →
+      </button>
 
-        function openFinalGift() {
-            document.getElementById('gift-btn').style.display = 'none';
-            document.getElementById('gift-hint').style.display = 'none';
-            document.getElementById('final-surprise').classList.remove('hidden');
-        }
-    </script>
+    </div>
+
+  </section>
+
+
+  <!-- LETTER -->
+  <section class="screen" id="letter">
+
+    <div class="section-card">
+
+      <h2>
+        A Message From My Heart
+      </h2>
+
+      <button class="envelope" id="envelope">
+
+        <span class="env-back"></span>
+        <span class="env-paper"></span>
+        <span class="env-flap"></span>
+        <span class="env-heart">♥</span>
+
+      </button>
+
+      <p class="tap">
+        Tap the envelope 💌
+      </p>
+
+
+      <article class="letter-card hidden" id="letterCard">
+
+        <div class="letter-heart">
+          ♥
+        </div>
+
+        <p class="dear">
+          Dear CHIDCHIDI,
+        </p>
+
+        <p>
+          Happy Birthday to someone truly special! 🎂
+        </p>
+
+        <p>
+          You are sweet, loyal, my rock, and I’m so grateful to have you in my life.
+        </p>
+
+        <p>
+          You bring so much warmth and sweetness into my life. Every moment with you is precious.
+        </p>
+
+        <p>
+          On your special day, I wish you all the happiness, love, and joy that you deserve.
+          May this year bring you countless beautiful moments and wonderful memories.
+        </p>
+
+        <p>
+          Here’s to celebrating you today and always! ❤️
+        </p>
+
+        <p class="love">
+          With love! 💗
+        </p>
+
+      </article>
+
+
+      <button class="next-btn hidden" id="letterNext">
+        Continue →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- GIFT -->
+  <section class="screen" id="lastThing">
+
+    <div class="section-card">
+
+      <h2>
+        One Last Thing...
+      </h2>
+
+      <p class="subtitle">
+        Tap the gift 🎁
+      </p>
+
+      <button class="gift" id="gift">
+        🎁
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+  <section class="screen" id="final">
+
+    <div class="final-card">
+
+      <div class="final-art">
+        🧸💗🐻
+      </div>
+
+      <h2>
+        Lots of love for you
+      </h2>
+
+      <p class="final-copy">
+        Once again, Happy Birthday, CHIDCHIDI!<br>
+        Stay happy, keep smiling &amp; keep shining. ✨
+      </p>
+
+      <button class="wide-btn" id="loveLetterBtn">
+        💌 Write a Heartfelt Love Letter
+      </button>
+
+      <div class="mini-actions">
+
+        <button class="mini-btn" id="sorryBtn">
+          ❤️ Say Sorry
+        </button>
+
+        <button class="mini-btn" id="proposalBtn">
+          💍 Propose
+        </button>
+
+      </div>
+
+      <p class="tiny-note" id="finalNote"></p>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+
 </body>
-</html>
+              </html>
